@@ -1,4 +1,4 @@
-package com.app.sis;
+package com.app.api.model;
 
 public class Message {
 

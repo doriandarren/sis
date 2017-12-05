@@ -11,6 +11,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletResponse;
 
+import com.app.api.business.HelloAppTwiiter;
+
 /**
  * This mock class is created to enable basic unit testing of the
  * {@link HelloAppTwiiter} class. Only methods used in the unit test

@@ -1,5 +1,6 @@
-package com.app.sis;
+package com.app.api.business;
 
+import com.app.api.model.Message;
 import com.google.api.server.spi.auth.EspAuthenticator;
 import com.google.api.server.spi.auth.common.User;
 import com.google.api.server.spi.config.AnnotationBoolean;
@@ -21,8 +22,8 @@ import com.google.api.server.spi.response.UnauthorizedException;
  version = "v1",
  namespace =
    @ApiNamespace(
-     ownerDomain = "echo.sis.app.com",
-     ownerName = "echo.sis.app.com",
+     ownerDomain = "echo.business.api.app.com",
+     ownerName = "echo.business.api.app.com",
      packagePath = ""
    ),
  // [START_EXCLUDE]

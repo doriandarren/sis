@@ -5,6 +5,8 @@ import java.io.IOException;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.app.api.business.HelloAppTwiiter;
+
 public class HelloAppEngineTest {
 
   @Test
