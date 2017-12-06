@@ -92,7 +92,13 @@
 		</div>
 	</div>
 	
-	
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">	
+				<a href="#" id="linkSave">Api Javascript Save</a>
+			</div>			
+		</div>
+	</div>
 	
 	
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -139,7 +145,17 @@
 			n : '10'
 		};
 
+		
+		var obj2 = {
+				id : '1',
+				message : 'Dariana LEE DEMASIADO y le hace caso al PAPA...'
+			};
+		
 		document.getElementById("linnk").href = '/_ah/api/echo/v1/echoMessage?'+serialiseObject(obj);
+		document.getElementById("linkSave").href = '/_ah/api/echo/v1/saveMessage?'+serialiseObject(obj2);
+		
+		
+		
 	</script>
 
 </body>
