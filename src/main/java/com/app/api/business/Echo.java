@@ -1,18 +1,11 @@
 package com.app.api.business;
 
-
-
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import com.app.api.datastore.EMF;
-import com.app.api.model.Email;
 import com.app.api.model.Message;
 import com.app.api.model.Operator;
-import com.google.api.server.spi.auth.EspAuthenticator;
-import com.google.api.server.spi.auth.common.User;
-import com.google.api.server.spi.config.AnnotationBoolean;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiIssuer;
 import com.google.api.server.spi.config.ApiMethod;
@@ -20,7 +13,6 @@ import com.google.api.server.spi.config.ApiMethod.HttpMethod;
 import com.google.api.server.spi.config.ApiNamespace;
 import com.google.api.server.spi.config.Named;
 import com.google.api.server.spi.config.Nullable;
-import com.google.api.server.spi.response.UnauthorizedException;
 
 
 
@@ -79,13 +71,6 @@ public class Echo {
 	private Message doEcho(Message message, Integer n) {	
 		return message;
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
