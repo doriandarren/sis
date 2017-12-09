@@ -4,7 +4,8 @@
 		<provider>org.datanucleus.api.jpa.PersistenceProviderImpl</provider>
 		
 		<class>com.app.api.model.Message</class> 
-		
+		<class>com.app.api.model.Email</class> 
+		<class>com.app.api.model.Operator</class>
         <properties>
             <property name="datanucleus.NontransactionalRead" value="true"/>
             <property name="datanucleus.NontransactionalWrite" value="true"/>

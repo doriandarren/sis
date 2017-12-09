@@ -1,4 +1,4 @@
-package com.app.api.business;
+package com.app.api.datastore;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

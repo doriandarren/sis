@@ -87,7 +87,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">	
-				<a href="#" id="linnk">Api Javascript</a>
+				<a href="#" id="linnk">Api Javascript Generate Object in js</a>
 			</div>			
 		</div>
 	</div>
@@ -101,13 +101,64 @@
 	</div>
 	
 	
+	
+	
+	
+	
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+			
+			<fieldset>
+			<legend>Form Post</legend>
+					
+			<div id="resultado"></div>		
+					
+			Name:<input type="text" name="name" id="name"><br>
+			Phone: <input type="text" name="phone" id="phone"><br>
+			Email: <input type="text" name="email" id="email"><br>
+			Observation: <textarea rows="2" cols="40" name="observation" id="observation"></textarea><br>
+			<a type="button" href="javascript:;" onclick="realizaProceso();return false;">Submit</a>
+			
+			</fieldset>
+			
+			</div>			
+		</div>
+	</div>
+	
+	
+	
+	
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/poper/poper.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
 
-	<script>	
+	<script>
+	
+		function realizaProceso(){
+	        var parametros = {
+	                "name" : document.getElementById("name").value,
+	                "phone" : document.getElementById("phone").value,
+	                "email" : document.getElementById("email").value,
+	                "observation" : document.getElementById("observation").value,
+	        };
+	        $.ajax({
+	                data:  parametros,
+	                url:   '/_ah/api/echo/v1/save_operator',
+	                type:  'post',
+	                beforeSend: function () {
+	                    $("#resultado").html("Procesando, espere por favor...");
+	                },
+	                success:  function (response) {	                	
+	                    $("#resultado").html(response.message);
+	                }
+	        });
+		}
+	
+	
 			  
 		/*var obj = {
 			   id: '5',
@@ -148,14 +199,12 @@
 		
 		var obj2 = {
 				id : '1',
-				message : 'Dariana LEE DEMASIADO y le hace caso al PAPA...'
+				message: 'Guardado en DATASTORE'				 
 			};
 		
 		document.getElementById("linnk").href = '/_ah/api/echo/v1/echoMessage?'+serialiseObject(obj);
 		document.getElementById("linkSave").href = '/_ah/api/echo/v1/saveMessage?'+serialiseObject(obj2);
-		
-		
-		
+						
 	</script>
 
 </body>
