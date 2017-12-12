@@ -15,6 +15,8 @@ import com.app.api.model.Operator;
 import static com.google.appengine.api.datastore.FetchOptions.Builder.withLimit;
 import static org.junit.Assert.assertEquals;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -106,9 +108,41 @@ public class TestApiOperator {
 	}
 		
 	
-	
+	@Test
+	public void testGetAllOperator() {
+		Operator operator1 = mockOperator("Dariana","658969696","dariana@app.es","No tiene niguna observacion");
+		Operator operator2 = mockOperator("Dilan","4444444","dilan@app.es","Sin niguna observacion");
+		Operator operator3 = mockOperator("Luisa","88888888","luisa@app.es","Alguna observacion");
+		Operator operator4 = mockOperator("Aron","999999999","aron@app.es","Observacion de criterio");
+		
+		service = new AppService();
+		service.addOperator(operator1);
+		service.addOperator(operator2);
+		service.addOperator(operator3);
+		service.addOperator(operator4);
+		
+		List<Operator> list = service.findAll(Operator.class);
+		
+		Assert.assertEquals(4, list.size());
+		
+		Assert.assertEquals("Dariana", list.get(0).getName());
+		
+	}
 	
 
+	@Test
+	public void testRemoveOperator() {
+		
+		Operator operator = mockOperator("Dariana","658969696","dariana@app.es","No tiene niguna observacion");
+		service = new AppService();
+		service.addOperator(operator);
+		
+		service.removeOperator(operator.getId());
+				
+		Operator operatorResul = service.find(Operator.class, operator.getId());
+		
+		Assert.assertNull(operatorResul);		
+	}
 
 	
 	//MOCK

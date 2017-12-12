@@ -89,7 +89,15 @@ public class AppService implements InfAppService {
 
 	@Override
 	public void removeOperator(@NotNull String operatorId) {
-		// TODO Auto-generated method stub
+		
+		EntityManager em = EMF.get().createEntityManager();
+		em.getTransaction().begin();
+		
+			Operator operator = em.find(Operator.class, operatorId);
+			em.remove(operator);
+			
+		em.getTransaction().commit();
+		em.close();
 		
 	}
 
@@ -109,10 +117,13 @@ public class AppService implements InfAppService {
 	}
 
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public <T> List<T> findAll(Class<T> clazz) {
-		// TODO Auto-generated method stub
-		return null;
+		String className = clazz.getSimpleName();
+		EntityManager em = EMF.get().createEntityManager();
+		return em.createQuery("SELECT o FROM " + className  + " o")
+				.getResultList();
 	}
 
 	
