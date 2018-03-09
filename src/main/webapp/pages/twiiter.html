@@ -24,20 +24,143 @@
 	
 	<div class="container">
 		<div class="row">
+			<div class="col-sm-12">				
+	
+				<p>Available Servlets</p>
+				<table class="table">
+					<tr>
+						<td><a href='/hello'>Twiiter</a></td>
+					</tr>
+					
+					<tr>
+						<td><a href='/_ah/api/echo/v1/echoMessage?message=ola&n=5'>Api Simple</a></td>
+					</tr>
+				</table>
+			</div>			
+		</div>
+	</div>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">	
+				<a href="#" id="linnk">Api Javascript Generate Object in js</a>
+			</div>			
+		</div>
+	</div>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">	
+				<a href="#" id="linkSave">Api Javascript Save</a>
+			</div>			
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="container">
+		<div class="row">
 			<div class="col-sm-12">
-				<h1>Twiiter</h1>
-								
-			</div>		
-		</div>	
-	</div>	
+			
+			<fieldset>
+			<legend>Form Post</legend>
+					
+			<div id="resultado"></div>		
+					
+			Name:<input type="text" name="name" id="name"><br>
+			Phone: <input type="text" name="phone" id="phone"><br>
+			Email: <input type="text" name="email" id="email"><br>
+			Observation: <textarea rows="2" cols="40" name="observation" id="observation"></textarea><br>
+			<a type="button" href="javascript:;" onclick="realizaProceso();return false;">Submit</a>
+			
+			</fieldset>
+			
+			</div>			
+		</div>
+	</div>
+	
+	
+	
+	
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/poper/poper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-    <script src="../vendor/poper/poper.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-    
-    <!-- Template render -->
-    <script src="../dist/js/render_menu.js"></script>
-    
+
+	<script>
+	
+		function realizaProceso(){
+	        var parametros = {
+	                "name" : document.getElementById("name").value,
+	                "phone" : document.getElementById("phone").value,
+	                "email" : document.getElementById("email").value,
+	                "observation" : document.getElementById("observation").value,
+	        };
+	        $.ajax({
+	                data:  parametros,
+	                url:   '/_ah/api/echo/v1/save_operator',
+	                type:  'post',
+	                beforeSend: function () {
+	                    $("#resultado").html("Procesando, espere por favor...");
+	                },
+	                success:  function (response) {	                	
+	                    $("#resultado").html(response.message);
+	                }
+	        });
+		}
+	
+	
+			  
+		/*var obj = {
+			   id: '5',
+			   message:'Hola que tal...',
+			   n: '10',
+			   bla: {
+			        param5: 'i\'m nested!',
+			        ja: {
+			            param6: 'i am really nested'
+			        }
+			   }
+			};*/
+				
+		var serialiseObject = function(obj) {
+		    var pairs = [];
+		    for (var prop in obj) {
+		        if (!obj.hasOwnProperty(prop)) {
+		            continue;
+		        }
+
+		        if (Object.prototype.toString.call(obj[prop]) == '[object Object]') {
+		            pairs.push(serialiseObject(obj[prop]));
+		            continue;
+		        }
+
+		        pairs.push(prop + '=' + obj[prop]);
+		    }
+		    return pairs.join('&');
+		};
+		
+		
+		var obj = {
+			id : '5',
+			message : 'Hola que tal...',
+			n : '10'
+		};
+
+		
+		var obj2 = {
+				id : '1',
+				message: 'Guardado en DATASTORE'				 
+			};
+		
+		document.getElementById("linnk").href = '/_ah/api/echo/v1/echoMessage?'+serialiseObject(obj);
+		document.getElementById("linkSave").href = '/_ah/api/echo/v1/saveMessage?'+serialiseObject(obj2);
+						
+	</script>
 </body>
 </html>
