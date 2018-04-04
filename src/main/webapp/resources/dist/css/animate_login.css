@@ -1,0 +1,24 @@
+/* ==========================================================================
+   Login Box styles
+   ========================================================================== */
+
+body,html{
+	background: url("../../../img/backgroud_login.jpg") no-repeat no-repeat;
+	height:100%;
+}
+
+
+/* for logo animation */
+
+.panel-animated {
+  -webkit-animation-duration: 1s;
+  -webkit-animation-delay: 0.1s;
+  -webkit-animation-iteration-count: 1;
+}
+
+.panel-border{
+	border: 1px solid #dddddd;
+	border-radius: 4px;
+	padding: 15px;
+}
+

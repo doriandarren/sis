@@ -8,6 +8,8 @@
 		<class>com.app.api.model.Place</class>
 		<class>com.app.api.model.Incidense</class>
 		
+		<exclude-unlisted-classes/>
+		
         <properties>
             <property name="datanucleus.NontransactionalRead" value="true"/>
             <property name="datanucleus.NontransactionalWrite" value="true"/>
